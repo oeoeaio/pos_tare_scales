@@ -1,0 +1,15 @@
+.pos .scale-screen .js_tare {
+    text-align: center;
+    font-size: 24px;
+    background: rgb(230, 230, 230);
+    color: #555555;
+    border-radius: 3px;
+    padding: 16px;
+    margin: 16px;
+    cursor: pointer;
+}
+
+.pos .scale-screen .js_tare.set {
+    background: rgb(184, 152, 204);
+    color: #fff;
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="pos.tare.button.template" xml:space="preserve">
+
+    <t t-name="TareButton">
+        <t t-set="button_class" t-value="(widget.label ? 'set' : '')"/>
+        <div t-attf-class="button js_tare {{ button_class }}">
+            <i class="fa fa-balance-scale"></i>
+                <t t-esc="widget.label || 'Set Tare Weight'"/>
+        </div>
+    </t>
+</templates>
