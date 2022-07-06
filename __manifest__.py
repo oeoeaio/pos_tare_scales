@@ -8,12 +8,14 @@
     'summary': 'Add TARE button to POS scales screen',
     'description': "",
     'depends': ['point_of_sale'],
-    'data': [
-        'views/assets.xml',
-    ],
-    'qweb': [
-        'static/src/xml/templates.xml'
-    ],
+    'assets': {
+        'point_of_sale.assets': [
+            'pos_tare_scales/static/src/**/*',
+        ],
+        'web.assets_qweb': [
+            'pos_tare_scales/static/src/xml/**/*',
+        ],
+    },
     'images': [],
     'installable': True,
     'application': False,
