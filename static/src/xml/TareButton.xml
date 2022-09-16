@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="TareButton" owl="1">
+        <t t-set="button_class" t-value="(state.label ? 'set' : '')"/>
+        <div t-attf-class="button js_tare {{ button_class }}" t-on-click="clickTare">
+            <i class="fa fa-balance-scale"></i>
+                <t t-esc="state.label || 'Set Tare Weight'"/>
+        </div>
+    </t>
+</templates>
