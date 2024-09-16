@@ -4,6 +4,7 @@ odoo.define('pos_tare_scales.TareButton', function (require) {
     const PosComponent = require('point_of_sale.PosComponent');
     const Registries = require('point_of_sale.Registries');
     const { useState } = owl.hooks;
+    const { useEffect } = require("@web/core/utils/hooks");
     const { parse } = require('web.field_utils');
     const { round_precision } = require('web.utils');
 
@@ -11,6 +12,13 @@ odoo.define('pos_tare_scales.TareButton', function (require) {
         constructor() {
             super(...arguments);
             this.state = useState({ label: '' });
+
+            this.setLabel = this.setLabel.bind(this);
+
+            useEffect(
+              this.setLabel,
+              () => [this.props.currentTare],
+            )
         }
         async clickTare() {
             const { confirmed, payload: value } = await this.showPopup('NumberPopup', {
@@ -18,23 +26,24 @@ odoo.define('pos_tare_scales.TareButton', function (require) {
                 title: 'Set Tare',
             });
             if (confirmed) {
-              this.setLabel(parse.float(value));
               this.props.updateTare(parse.float(value));
             }
         }
         setLabel(value) {
+            console.log(value)
             if (!value) {
               this.state.label = "";
-              return this.render();
+              this.render()
+              return;
             }
 
             var defaultstr = (value || 0).toFixed(3) + ' Kg';
             if (!this.props.product || !this.env.pos) {
-                return defaultstr;
+                return;
             }
             const unit_id = this.props.product.uom_id;
             if(!unit_id){
-                return defaultstr;
+                return;
             }
             const unit = this.env.pos.units_by_id[unit_id[0]];
             const weight = round_precision(value || 0, unit.rounding);

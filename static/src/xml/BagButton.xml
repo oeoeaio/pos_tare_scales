@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="BagButton" owl="1">
+        <div t-attf-class="button js_tare" t-on-click="clickBag">
+            <i class="fa fa-shopping-bag"></i>
+            <div>With Bag</div>
+        </div>
+    </t>
+</templates>

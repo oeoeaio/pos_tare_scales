@@ -8,6 +8,9 @@
             updateTare="updateTare"
             product="props.product"
           />
+          <BagButton
+            updateTare="updateTare"
+          />
         </xpath>
     </t>
 </templates>
